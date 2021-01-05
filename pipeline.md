@@ -36,7 +36,7 @@ application.properties
 %prod.quarkus.s2i.base-jvm-image=registry.access.redhat.com/ubi8/openjdk-11
 
 Jenkinsfile
-
+[Jenkinsfile](./Jenkinsfile)
 
 Create BC
 $ oc new-build --name=testapp-pipeline --strategy=pipeline https://github.com/rhnkoike/testapp.git
@@ -47,7 +47,17 @@ $ oc new-build --name=testapp-pipeline --strategy=pipeline https://github.com/rh
     buildconfig.build.openshift.io "testapp-pipeline" created
 --> Success
 
+対応したこと
+- masterブランチ作成
+- maven.compiler.source/targetを1.8に変更
+- TestDatabaseをコメントアウト
+- labelを変更？
 
+
+log
+[jenkinsbuild.log](./jenkinsbuild.log)
+
+![img](./img/buildlog.png)
 
 
 
