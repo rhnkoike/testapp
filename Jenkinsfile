@@ -6,6 +6,10 @@ node('maven') {
 	def appName = "testapp"
 	def devPrj = "dev"
 
+	stage('java version') {
+		sh "java -version"
+	}
+
 	stage('Cleanup env Dev') {
 		// Delete all objects except for is.
 		openshift.withCluster() {

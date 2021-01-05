@@ -38,6 +38,16 @@ application.properties
 Jenkinsfile
 
 
+Create BC
+$ oc new-build --name=testapp-pipeline --strategy=pipeline https://github.com/rhnkoike/testapp.git
+    * A pipeline build using source code from https://github.com/rhnkoike/testapp.git will be created
+      * Use 'oc start-build' to trigger a new build
+
+--> Creating resources with label build=testapp-pipeline ...
+    buildconfig.build.openshift.io "testapp-pipeline" created
+--> Success
+
+
 
 
 
