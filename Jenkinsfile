@@ -8,6 +8,8 @@ node('maven') {
 
 	stage('java version') {
 		sh "java -version"
+		sh "mvn -version"
+		sh "echo $JAVA_HOME"
 	}
 
 	stage('Cleanup env Dev') {
@@ -40,7 +42,8 @@ node('maven') {
 		}
 
 		echo "Building version ${version}"
-		sh "${mvnCmd} clean package -DskipTests"
+		// sh "${mvnCmd} clean package -DskipTests"
+		sh "${mvnCmd} clean compile"
 	}
 
 	stage('Unit Tests') {
