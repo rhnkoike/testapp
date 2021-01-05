@@ -8,8 +8,9 @@ node('maven') {
 
 	stage('java version') {
 		sh "java -version"
+		sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk"
 		sh "mvn -version"
-		sh "echo $JAVA_HOME"
+		// sh "echo $JAVA_HOME"
 	}
 
 	stage('Cleanup env Dev') {
