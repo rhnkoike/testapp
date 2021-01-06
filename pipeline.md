@@ -49,9 +49,10 @@ $ oc new-build --name=testapp-pipeline --strategy=pipeline https://github.com/rh
 
 対応したこと
 - masterブランチ作成
-- maven.compiler.source/targetを1.8に変更
+- maven.compiler.source/targetを1.8に変更（->JAVA_HOME指定により回避）
 - TestDatabaseをコメントアウト
-- labelを変更？
+- %testを実DB接続設定に変更
+- labelを変更
 
 
 log

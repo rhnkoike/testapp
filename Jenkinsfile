@@ -8,7 +8,7 @@ node('maven') {
 
 	stage('java version') {
 		sh "java -version"
-		sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.9.11-0.el8_2.x86_64"
+		// sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.9.11-0.el8_2.x86_64"
 		sh "mvn -version"
 		sh "echo $JAVA_HOME"
 	}
@@ -55,11 +55,11 @@ node('maven') {
 
 	def newTag = "dev-${version}"
 
-	stage('Build Image') {
-		echo "New Tag: ${newTag}"
+	// stage('Build Image') {
+	// 	echo "New Tag: ${newTag}"
 
-		echo "Building image ${newTag}"
-		sh "${mvnCmd} clean package -Dquarkus.container-image.build=true -DskipTests"
+	// 	echo "Building image ${newTag}"
+	// 	sh "${mvnCmd} clean package -Dquarkus.container-image.build=true -DskipTests"
 
 		// Copy the war file and other artifaces to deployments directory.
 		// sh "mkdir -p deployments"
@@ -83,7 +83,7 @@ node('maven') {
 		// 		echo "${result.actions[0].out}"
 		// 	}
 		// }
-	}
+	// }
 
 	stage('Deploy to Dev') {
 		
