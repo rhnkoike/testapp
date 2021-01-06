@@ -48,7 +48,7 @@ node('maven') {
 		sh "${mvnCmd} clean compile"
 	}
 
-	stage('Unit Tests') {
+	stage('Tests') {
 		echo "Unit Tests"
 		sh "${mvnCmd} test"
 	}
