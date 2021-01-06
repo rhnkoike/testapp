@@ -8,7 +8,7 @@ node('maven') {
 
 	stage('java version') {
 		sh "java -version"
-		sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk"
+		// sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk"
 		sh "mvn -version"
 		// sh "echo $JAVA_HOME"
 	}
@@ -17,11 +17,11 @@ node('maven') {
 		// Delete all objects except for is.
 		openshift.withCluster() {
 			openshift.withProject(devPrj) {
-			    openshift.selector("bc", [ (app.kubernetes.io/name): appName ]).delete()
-			    openshift.selector("dc", [ (app.kubernetes.io/name): appName ]).delete()
-			    openshift.selector("svc", [ (app.kubernetes.io/name): appName ]).delete()
-			    openshift.selector("pod", [ (app.kubernetes.io/name): appName ]).delete()
-			    openshift.selector("route", [ (app.kubernetes.io/name)
+			    openshift.selector("bc", [ "app.kubernetes.io/name": appName ]).delete()
+			    openshift.selector("dc", [ "app.kubernetes.io/name": appName ]).delete()
+			    openshift.selector("svc", [ "app.kubernetes.io/name": appName ]).delete()
+			    openshift.selector("pod", [ "app.kubernetes.io/name": appName ]).delete()
+			    openshift.selector("route", [ "app.kubernetes.io/name"
 				: appName ]).delete()
 			}
 		}
