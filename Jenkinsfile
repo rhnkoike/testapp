@@ -23,6 +23,7 @@ node('maven') {
 			    openshift.selector("pod", [ "app.kubernetes.io/name": appName ]).delete()
 			    openshift.selector("route", [ "app.kubernetes.io/name"
 				: appName ]).delete()
+				openshift.selector("secret", [ "app.kubernetes.io/name": appName ]).delete()
 			}
 		}
 
