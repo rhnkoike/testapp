@@ -68,8 +68,10 @@ public class FruitsEndpointTest {
 ```
 ### パイプラインの作成
 
-Jenkinsfileを作成します。
+Jenkinsfileを作成します。  
+（このJenkinsfileは常に`master`ブランチに対して処理を行います）
 - [Jenkinsfile](./Jenkinsfile)
+
 
 OpenShiftのクラスターにログインして、Projectを作成します。
 今回はdevプロジェクトとします。

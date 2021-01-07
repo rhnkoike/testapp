@@ -8,7 +8,6 @@ node('maven') {
 
 	stage('java version') {
 		sh "java -version"
-		// sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.9.11-0.el8_2.x86_64"
 		sh "mvn -version"
 		// sh "echo $JAVA_HOME"
 	}
@@ -27,23 +26,10 @@ node('maven') {
 			}
 		}
 
-		// Prepare Test - DB start
-		openshift.withCluster() {
-			openshift.withProject(devPrj) {
-			    openshift.newApp("postgresql-ephemeral",
-								"-p DATABASE_SERVICE_NAME=postgresql",
-								"-p POSTGRESQL_DATABASE=quarkus_test",
-								"-p POSTGRESQL_USER=quarkus_test",
-								"-p POSTGRESQL_PASSWORD=quarkus_test",
-								"-l app.kubernetes.io/name=${appName}"
-				)
-			}
-		}
-
-
 	}
 
 	stage('Checkout Source') {
+		// 注意：Checkoutするブランチは"master"で固定されています
 		checkout scm
 	}
 
@@ -60,7 +46,6 @@ node('maven') {
 		}
 
 		echo "Building version ${version}"
-		// sh "${mvnCmd} clean package -DskipTests"
 		sh "${mvnCmd} clean compile"
 	}
 
@@ -79,7 +64,7 @@ node('maven') {
 			}
 		}
 
-		echo "Unit Tests"
+		echo "Unit&Integration Tests"
 		sh "${mvnCmd} test"
 	}
 
@@ -88,7 +73,7 @@ node('maven') {
 
 	stage('Deploy to Dev') {
 		
-		echo "Deploying image ${newTag}"
+		echo "Deploy image ${newTag}"
 		sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests"
 
 	}
