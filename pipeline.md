@@ -112,7 +112,7 @@ $ oc new-app jenkins-ephemeral
 ...
 ```
 
-ビルド・実行にJava11を使用している場合はJenkinsの設定画面からJenkins-AgentのMavenコンテナの環境変数JAVA_HOMEにJava11のパスを指定してください。
+ビルド・実行にJava11を使用している場合はJenkinsの設定画面からJenkins-AgentのMavenコンテナの環境変数JAVA_HOMEにJava11のパスを指定してください。  
 ![maven_javahome.png](./img/maven_javahome.png)
 
 
@@ -137,7 +137,7 @@ build.build.openshift.io/testapp-pipeline-xx started
 GitリポジトリへのPushをトリガーに自動実行する場合は、BuildConfigのWebhook URLをGithubのWebhookを作成して設定することで可能になります。
 
 ビルドが成功するとOpenShiftのWebコンソール等で確認できます。
-![buildlog.png](./img/buildlog.png)
+![buildlog.png](./img/buildlog0106.png)
 
 `View logs`リンクからJenkinsのコンソールを起動してログを確認できます。
 ```

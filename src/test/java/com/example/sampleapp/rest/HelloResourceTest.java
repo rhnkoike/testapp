@@ -77,39 +77,4 @@ public class HelloResourceTest {
           // .log().all();
     }
 
-    @Test
-    public void testJson5() {
-      given()
-        .when().get("/hello/json")
-        .then()
-          .statusCode(200)
-          .body("occupation.title", equalTo("Student"))
-          .log().all();
-    }
-
-
-
-    // @Test
-    // public void testExternalJson() {
-      
-    //   int sum = 0;
-    //   Object obj =
-    //   given()
-    //     .queryParam("CUSTOMER_ID","68195")
-    //     .queryParam("PASSWORD","1234!")
-    //     .queryParam("Account_No","1")
-    //     .when().get("http://demo.guru99.com/V4/sinkministatement.php")
-    //     // .timeIn(TimeUnit.MILLISECONDS);
-    //     .then()
-    //        .log().all()
-    //       //  .assertThat()
-    //       //  .statusCode(200)
-    //       .contentType("application/json")
-    //        .extract().path("result.statements.AMOUNT");
-
-    //   System.out.println(((XmlPath)obj).get());
-           
-
-    // }
-
 }
