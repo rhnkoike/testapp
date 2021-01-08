@@ -27,11 +27,11 @@ public class HelloResourceTest {
       given()
         .when().get("/hello/json")
         .then()
-          // .log().all()
+          .log().all()
           .body(containsString("Yamada"));
     }
 
-    @Test
+    // @Test
     public void testJson2() {
       given()
         .when().get("/hello/json")
@@ -41,7 +41,7 @@ public class HelloResourceTest {
 
     }
 
-    @Test
+    // @Test
     public void testJson3() {
       given()
         .when().get("/hello/json")
@@ -54,7 +54,7 @@ public class HelloResourceTest {
 
     }
 
-    @Test
+    // @Test
     public void testJson404() {
       given()
         .when().get("/hello/404")
