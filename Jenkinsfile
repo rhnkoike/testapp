@@ -46,7 +46,8 @@ node('maven') {
 		}
 
 		echo "Building version ${version}"
-		sh "${mvnCmd} clean compile"
+        //sh "${mvnCmd} clean compile"
+		sh "${mvnCmd} clean compile  -s ./setting.xml"
 	}
 
 	stage('Tests') {
@@ -74,7 +75,7 @@ node('maven') {
 	stage('Deploy to Dev') {
 		
 		echo "Deploy image ${newTag}"
-		sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests"
+		sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
         // sh "${mvnCmd} clean package -Pnative -Dquarkus.native.container-build -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -DskipTests"
 
 	}
