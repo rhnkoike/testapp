@@ -66,7 +66,8 @@ node('maven') {
 		}
 
 		echo "Unit&Integration Tests"
-		sh "${mvnCmd} test"
+		// sh "${mvnCmd} test"
+        sh "${mvnCmd} test -s ./setting.xml"
 	}
 
 	def newTag = "dev-${version}"
