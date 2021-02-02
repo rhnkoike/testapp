@@ -81,7 +81,7 @@ node('mvn-quarkus') {
 		
 		echo "Deploy image ${newTag}"
 		// sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
-        sh "${mvnCmd} package -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -DskipTests"
+        sh "${mvnCmd} package -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -DskipTests -s ./setting.xml"
 
 	}
 }
