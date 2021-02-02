@@ -8,6 +8,8 @@ node('mvn-quarkus') {
 	def devPrj = "dev"
 
 	stage('java version') {
+		sh "echo $PATH"
+		sh "ls -l /opt"
 		sh "echo $JAVA_HOME"
 		sh "java -version"
 		sh "mvn -version"
