@@ -9,7 +9,7 @@ node('mvn-quarkus') {
 
 	stage('java version') {
 		sh "echo $PATH"
-		sh "ls -l /opt"
+		sh "echo $GRAALVM_HOME"
 		sh "echo $JAVA_HOME"
 		sh "java -version"
 		sh "mvn -version"
@@ -80,8 +80,8 @@ node('mvn-quarkus') {
 	stage('Deploy to Dev') {
 		
 		echo "Deploy image ${newTag}"
-		sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
-        // sh "${mvnCmd} clean package -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -DskipTests"
+		// sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
+        sh "${mvnCmd} package -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -DskipTests"
 
 	}
 }
