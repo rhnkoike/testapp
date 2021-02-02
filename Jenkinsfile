@@ -1,6 +1,7 @@
 #!groovy
 
-node('maven') {
+//node('maven') {
+node('mvn-quarkus') {
 	def mvnCmd = "mvn"
 
 	def appName = "testapp"
@@ -77,7 +78,7 @@ node('maven') {
 		
 		echo "Deploy image ${newTag}"
 		sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
-        // sh "${mvnCmd} clean package -Pnative -Dquarkus.native.container-build -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -DskipTests"
+        // sh "${mvnCmd} clean package -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -DskipTests"
 
 	}
 }
