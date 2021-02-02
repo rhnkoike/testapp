@@ -8,9 +8,10 @@ node('mvn-quarkus') {
 	def devPrj = "dev"
 
 	stage('java version') {
+		sh "echo $JAVA_HOME"
 		sh "java -version"
 		sh "mvn -version"
-		// sh "echo $JAVA_HOME"
+		
 	}
 
 	stage('Cleanup env Dev') {
