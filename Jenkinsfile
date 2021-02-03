@@ -13,7 +13,6 @@ node('mvn-quarkus') {
 		sh "echo $JAVA_HOME"
 		sh "java -version"
 		sh "mvn -version"
-		sh "yum -y install podman"
 		
 	}
 
