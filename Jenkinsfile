@@ -78,15 +78,15 @@ node('mvn-quarkus') {
 	def newTag = "dev-${version}"
 
 
-	stage('Deploy to Dev') {
+	// stage('Deploy to Dev') {
 		
-		echo "Deploy image ${newTag}"
-		// sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
-        sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -Dquarkus.native.container-runtime=podman   -s ./setting.xml"
-		// sh "${mvnCmd} verify -Pnative -Dquarkus.container-image.build=false -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
-		// sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
+	// 	echo "Deploy image ${newTag}"
+	// 	// sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
+    //     sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -Dquarkus.native.container-runtime=podman   -s ./setting.xml"
+	// 	// sh "${mvnCmd} verify -Pnative -Dquarkus.container-image.build=false -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
+	// 	// sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
 
-	}
+	// }
 }
 
 // Convenience Functions to read variables from the pom.xml
