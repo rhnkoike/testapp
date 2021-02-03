@@ -13,6 +13,7 @@ node('mvn-quarkus') {
 		sh "echo $JAVA_HOME"
 		sh "java -version"
 		sh "mvn -version"
+		sh "yum -y install podman"
 		
 	}
 
@@ -81,9 +82,9 @@ node('mvn-quarkus') {
 		
 		echo "Deploy image ${newTag}"
 		// sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
-        // sh "${mvnCmd} package -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
-		sh "${mvnCmd} verify -Pnative -Dquarkus.container-image.build=false -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
-		sh "${mvnCmd} package -DskipTest -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
+        sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.native.container-build=true -Dquarkus.native.container-runtime=podman　-Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
+		// sh "${mvnCmd} verify -Pnative -Dquarkus.container-image.build=false -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
+		// sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
 
 	}
 }
