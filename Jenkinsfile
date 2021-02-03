@@ -82,7 +82,7 @@ node('mvn-quarkus') {
 		
 		echo "Deploy image ${newTag}"
 		// sh "${mvnCmd} clean package -Dquarkus.kubernetes.deploy=true -DskipTests -s ./setting.xml"
-        sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml　-Dquarkus.native.container-runtime=podman"
+        sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -Dquarkus.native.container-runtime=podman   -s ./setting.xml"
 		// sh "${mvnCmd} verify -Pnative -Dquarkus.container-image.build=false -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
 		// sh "${mvnCmd} package -DskipTests -Pnative -Dquarkus.container-image.build=true -Dquarkus.kubernetes.deploy=false -s ./setting.xml"
 
